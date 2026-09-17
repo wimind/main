@@ -41,7 +41,7 @@ window.I18N = {
     "join.g2": "Помощь с билдами, фармом и экономикой.",
     "join.g3": "Совместные вылазки и обучение PvP.",
     "join.g4": "Шанс стать частью ядра и влиять на клан.",
-    "join.cta": "Войти в Discord"
+    "join.cta": "Войти в Discord",
     "join.ctaLabel": "Готов?",
     "join.ctaText": "Заходи в Discord — там общение, заявки и ответы на вопросы.",
   },
@@ -77,7 +77,7 @@ window.I18N = {
     "join.g2": "Help with builds, farming and economy.",
     "join.g3": "Joint outings and PvP training.",
     "join.g4": "A chance to be part of the core and shape the guild.",
-    "join.cta": "Join Discord"
+    "join.cta": "Join Discord",
     "join.ctaLabel": "Ready?",
     "join.ctaText": "Join us on Discord — that's where we talk, take applications and answer questions.",
   }
