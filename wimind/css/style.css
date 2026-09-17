@@ -541,3 +541,65 @@ body.i18n-fading { opacity: 0; transition: opacity .22s ease; }
     transition-duration: .01ms !important;
   }
 }
+/* ============================================================
+   JOIN — карточки слева, кнопка справа
+   ============================================================ */
+.join-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 40px;
+  align-items: start;
+}
+
+.join-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.join-info .card { margin-bottom: 0; }
+
+/* Правая колонка с кнопкой */
+.join-cta {
+  position: sticky;
+  top: 40px;
+}
+
+.join-cta-inner {
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 32px 28px;
+  text-align: left;
+  background: var(--bg-soft);
+  animation: fadeIn .8s ease .35s both;
+}
+
+.join-cta-label {
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  letter-spacing: .38em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.join-cta-text {
+  color: var(--text-soft);
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.join-cta-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Мобильные: колонка одна, кнопка сверху карточек */
+@media (max-width: 860px) {
+  .join-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .join-cta { position: static; order: -1; }
+}
