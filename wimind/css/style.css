@@ -1,6 +1,6 @@
 /* ============================================================
    WIMIND · style.css
-   Светлая минималистичная тема · полная ширина
+   Светлая минималистичная тема · edge-to-edge
    ============================================================ */
 
 :root {
@@ -15,7 +15,7 @@
   --accent-soft: #eaf2fe;
   --accent-deep: #2f6fd6;
 
-  --gutter: 56px;                /* боковые отступы */
+  --gutter: 40px;                 /* боковой отступ — единый для всего */
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -41,7 +41,7 @@ a:hover { color: var(--accent-deep); }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 28px var(--gutter);
+  padding: 26px var(--gutter);
 }
 
 .logo {
@@ -89,7 +89,7 @@ a:hover { color: var(--accent-deep); }
   background: var(--accent-soft);
 }
 
-/* ---------- Home (один экран) ---------- */
+/* ---------- Home ---------- */
 .home {
   height: 100dvh;
   display: grid;
@@ -207,11 +207,12 @@ h1.title {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 28px var(--gutter);
+  padding: 26px var(--gutter);
   font-size: 11px;
   letter-spacing: .22em;
   text-transform: uppercase;
   color: var(--muted);
+  border-top: 1px solid var(--line);
   animation: fadeIn 1s ease 1.8s both;
 }
 .bottom .server { display: inline-flex; align-items: center; gap: 8px; }
@@ -229,13 +230,14 @@ h1.title {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
-/* Ключевое: контент — на всю ширину, никаких max-width */
+/* Контент — на всю ширину, с боковыми отступами только через padding */
 .page .content {
   flex: 1;
   width: 100%;
-  padding: 40px var(--gutter) 100px;
+  padding: 40px var(--gutter) 80px;
 }
 
 .eyebrow {
@@ -265,22 +267,21 @@ h1.title {
   animation: fadeIn .8s ease .3s both;
 }
 
+/* Параграфы — на всю ширину, без max-width */
 .page p {
   color: var(--text-soft);
   font-size: 16px;
   margin-bottom: 18px;
-  /* Текст на всю ширину, но с ограничением для читаемости */
-  max-width: 1200px;
   animation: fadeIn .8s ease .35s both;
 }
 
 /* ---------- News list ---------- */
-.news-list { display: flex; flex-direction: column; }
+.news-list { display: flex; flex-direction: column; width: 100%; }
 .news-item {
   display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: 32px;
-  padding: 28px 0;
+  grid-template-columns: 180px 1fr;
+  gap: 40px;
+  padding: 26px 0;
   border-bottom: 1px solid var(--line);
   transition: opacity .2s ease;
   cursor: pointer;
@@ -322,7 +323,6 @@ h1.title {
 .news-body {
   margin-top: 10px;
   animation: fadeIn .5s ease both;
-  max-width: 1200px;
 }
 .news-body h2 {
   font-family: 'Cinzel', serif;
@@ -375,7 +375,7 @@ h1.title {
   padding: 32px 36px;
   margin-bottom: 16px;
   border-radius: 2px;
-  max-width: 1200px;
+  width: 100%;
 }
 .card h3 {
   font-family: 'Cinzel', serif;
@@ -405,34 +405,29 @@ h1.title {
 }
 
 /* ============================================================
-   ЧЁРНАЯ ДЫРА — на всю ширину экрана (edge to edge)
+   ЧЁРНАЯ ДЫРА — во всю ширину экрана
+   Стоит ВНЕ .page .content, поэтому просто на 100% ширины
    ============================================================ */
 .void-section {
-  /* Компенсируем боковые паддинги .content, чтобы выйти на всю ширину */
-  margin-left: calc(-1 * var(--gutter));
-  margin-right: calc(-1 * var(--gutter));
-  margin-top: -40px;              /* прижимаем к заголовку сверху */
-  margin-bottom: 56px;
-  width: auto;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .void-frame {
   position: relative;
+  width: 100%;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  border-left: none;
-  border-right: none;
-  border-radius: 0;
   overflow: hidden;
   background: #fff;
   animation: fadeIn .9s ease .35s both;
 }
 
-/* Сама дыра — растянута по высоте */
 .blackhole {
   position: relative;
   width: 100%;
-  height: clamp(420px, 80vh, 900px);   /* адаптивная высота */
+  height: clamp(420px, 80vh, 900px);
   cursor: grab;
   touch-action: none;
   user-select: none;
@@ -449,8 +444,8 @@ h1.title {
 }
 
 .void-caption {
-  margin: 26px auto 0;
   max-width: 640px;
+  margin: 26px auto 60px;
   text-align: center;
   padding: 0 var(--gutter);
   animation: fadeIn .9s ease .5s both;
@@ -470,7 +465,6 @@ h1.title {
   line-height: 1.7;
   font-style: italic;
   margin: 0;
-  max-width: none;
 }
 
 /* ---------- Page transition overlay ---------- */
@@ -518,7 +512,7 @@ body.i18n-fading { opacity: 0; transition: opacity .22s ease; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 960px) {
-  :root { --gutter: 32px; }
+  :root { --gutter: 28px; }
 }
 
 @media (max-width: 640px) {
@@ -538,10 +532,8 @@ body.i18n-fading { opacity: 0; transition: opacity .22s ease; }
   .news-item { grid-template-columns: 1fr; gap: 6px; }
 
   .blackhole { height: clamp(300px, 60vh, 500px); }
-  .void-section { margin-top: -30px; }
 }
 
-/* Уважение к настройке "уменьшить движение" */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: .01ms !important;
